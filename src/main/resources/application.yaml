@@ -1,0 +1,18 @@
+management:
+  endpoints:
+    # Sem enabled-by-default: false todas as métricas serão coletadas. Pode não ser interessante em produção.
+    enabled-by-default: false
+    web:
+      exposure:
+        # Define quais métricas serão expostas no endpoint do actuator
+        include: 'health, metrics,prometheus'
+  #Define os endpoints que deverão ser expostos
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    metrics:
+      enabled: true
+      show-details: always
+    prometheus:
+      enabled: true
