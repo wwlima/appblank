@@ -3,8 +3,10 @@
  */
 package br.com.w2lima.appblank.repository;
 
+import java.util.List;
 import java.util.UUID;
 
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -26,5 +28,8 @@ public interface NotaRepository extends JpaRepository<NotaModel, UUID> {
 			where n.id = :nota
 			""")
 	NotaModel findNota(UUID nota);
+	
+	@EntityGraph(attributePaths = {"vendas","vendas.produto","user"})   
+	List<NotaModel> findAll();
 	
 }
