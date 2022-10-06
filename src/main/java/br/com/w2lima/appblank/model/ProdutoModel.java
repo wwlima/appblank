@@ -1,19 +1,14 @@
 package br.com.w2lima.appblank.model;
 
-import java.math.BigDecimal;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonSubTypes.Type;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -9,7 +9,6 @@ import java.util.UUID;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -115,5 +114,25 @@ public class NotaModel {
 		return Objects.equals(id, other.id);
 	}
 
+	@Override
+	public String toString() {
+		String result = """
+				Nota: [IDNOTA]
+				  Cliente: [NOMEUSUARIO]
+				  Data: [DATANOTA]
+				  itens:
+				""";
+		String itens =
+
+				" --ID--------------------------------- PRODUTO -- QTD ----  VALOR --------\n";
+		for (VendaModel vendaModel : vendas) {
+			itens = itens
+					.concat(" " + vendaModel.getProduto().getId().toString() + "  " + vendaModel.getProduto().getName()
+							+ "     " + vendaModel.getQtd() + "         " + vendaModel.getValor() + "\n");
+		}
+
+		return result.concat(itens).replace("[IDNOTA]", id.toString()).replace("[NOMEUSUARIO]", user.getName())
+				.replace("[DATANOTA]", data.toString());
+	}
 
 }
