@@ -28,15 +28,18 @@ public class UserModel {
 
 	@Id
 	@Column(name = "ID_USER", length = 36)
+	@org.hibernate.annotations.Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
 
 	@Column(name = "NM_USER")
     private String name;
 
-	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd'T'HH:mm:ss")
+	@JsonFormat(shape = JsonFormat.Shape.STRING,pattern = "yyyy-MM-dd")
     private LocalDate born;
 	
 	@Convert(converter = UserStatusConverter.class)	
 	private UserStatusEum status;
 
+	
+	
 }
